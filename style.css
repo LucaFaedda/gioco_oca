@@ -1,0 +1,97 @@
+*{
+    margin: 0 ;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(14, 14, 95);
+}
+
+.container{
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 5rem;
+}
+
+/* sezione row */
+
+.row-orrizontale, .row-verticale, .row-orrizontale-2, .row-verticale-2, .row-dado{
+    display: flex;
+}
+
+.row-orrizontale-2{
+    flex-direction: row-reverse;
+}
+
+.row-verticale, .row-verticale-2{
+    flex-direction: column;
+}
+
+.row-verticale{
+    align-items: end;
+}
+
+.row-dado{
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+/* sezione col */
+
+.col-2-orrizontale{
+    width: calc(100% / 12);
+    border: 1px solid red;
+    height: 40px;
+    background-color: azure;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.col-2-verticale{
+    width: calc(100% / 12); /* La stessa larghezza delle colonne orizzontali */
+    border: 1px solid red;
+    height: 40px;
+    background-color: azure;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.col-12{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+/* sezione classi generiche */
+
+.numero-casella{
+    font-weight: 500;
+    color: black;
+}
+
+#result{
+    font-weight: 500;
+    color: red;
+    margin-left: 2rem;
+}
+
+#dado{
+    padding: 10px 20px;
+    background-color: rgba(121, 3, 231, 0.74);
+    cursor: pointer;
+    color: #fff;
+    border-radius: 15px;
+    
+}
+
+/* sezione pedine */
+
+.pedina-uno{
+    width: 5px;
+    height: 5px;
+    background-color: blue;
+    display: block;
+}
