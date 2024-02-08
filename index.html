@@ -4,11 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
     <div class="container">
-        <div class="col-2-orrizontale" id="zero"><p class="numero-casella"><span class="pedina-uno"></span></p></div>
+        <div class="row-giocatori" id="player">
+            <div class="col-6">
+                <div class="square" id="player-uno"><h2>Player Uno</h2></div>
+            </div>
+            <div class="col-6">
+                <div class="square" id="player-due"><h2>Player Due</h2></div>
+            </div>
+        </div>
+        <h2 id="turno"></h2>
         <div class="row-orrizontale">
             <div class="col-2-orrizontale" id="uno"><p class="numero-casella">1</p></div>
             <div class="col-2-orrizontale" id="due"><p class="numero-casella">2</p></div>
@@ -30,7 +41,7 @@
         <div class="row-orrizontale-2">
             <div class="col-2-orrizontale" id="quindici"><p class="numero-casella">15</p></div>
             <div class="col-2-orrizontale" id="sedici"><p class="numero-casella">16</p></div>
-            <div class="col-2-orrizontale" id="diciasette"><p class="numero-casella">17</p></div>
+            <div class="col-2-orrizontale" id="diciassette"><p class="numero-casella">17</p></div>
             <div class="col-2-orrizontale" id="diciotto"><p class="numero-casella">18</p></div>
             <div class="col-2-orrizontale" id="diciannove"><p class="numero-casella">19</p></div>
             <div class="col-2-orrizontale" id="venti"><p class="numero-casella">20</p></div>
@@ -64,7 +75,7 @@
             <div class="col-2-verticale" id="quarantadue"><p class="numero-casella">42</p></div>
         </div>
         <div class="row-orrizontale-2">
-            <div class="col-2-orrizontale" id="quarantre"><p class="numero-casella">43</p></div>
+            <div class="col-2-orrizontale" id="quarantatre"><p class="numero-casella">43</p></div>
             <div class="col-2-orrizontale" id="quarantaquattro"><p class="numero-casella">44</p></div>
             <div class="col-2-orrizontale" id="quarantacinque"><p class="numero-casella">45</p></div>
             <div class="col-2-orrizontale" id="quarantasei"><p class="numero-casella">46</p></div>
@@ -75,7 +86,7 @@
             <div class="col-2-orrizontale" id="cinquantuno"><p class="numero-casella">51</p></div>
             <div class="col-2-orrizontale" id="cinquantadue"><p class="numero-casella">52</p></div>
             <div class="col-2-orrizontale" id="cinquantatre"><p class="numero-casella">53</p></div>
-            <div class="col-2-orrizontale" id="cinquantraquattro"><p class="numero-casella">54</p></div>
+            <div class="col-2-orrizontale" id="cinquantaquattro"><p class="numero-casella">54</p></div>
         </div>
         <div class="row-verticale-2">
             <div class="col-2-verticale" id="cinquantacinque"><p class="numero-casella">55</p></div>
