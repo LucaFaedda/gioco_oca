@@ -7,7 +7,8 @@ let caselle = {};
 let btn = document.getElementById("dado");
 let playerUno = true;
 let playerDue = false;
-let turnoFermo = 0;
+let turnoFermoUno = 0;
+let turnoFermoDue = 0;
 let turno = document.getElementById("turno");
 let count = 0
 
@@ -37,142 +38,27 @@ turno.innerHTML = "È il  turno del player uno"
 function muoviPedina(){
 
  count++
- console.log(count)
+ console.log("count: " + count)
 
 
-    if (turnoFermo > 0) {
-        turnoFermo--;
-        if (turnoFermo === 0) {
-            passaTurno();
+    
+
+    if(playerUno === true){
+    
+        if(turnoFermoUno > 0){
+            turnoFermoUno--  
         }
-        return;
-
-    }
-
-    
-
-    if(playerUno == true){
-        
-        let risultato = Math.floor(Math.random() * (1, 6) + 1);
-        document.getElementById("result").innerHTML = "È uscito: " + risultato;
-        posizionePedinaUno += risultato 
-    
-        // elimina classe avanti
-        const colonne = document.querySelectorAll('.col-2-orrizontale , .col-2-verticale');
-        // cicla tutte le colonne dove c'è la classe e la toglie
-        colonne.forEach(colonna => colonna.classList.remove("pedina-avanti-uno"));
-        // elimina classe indietro
-        const colonne_indietro = document.querySelectorAll('.col-2-orrizontale');
-        // cicla tutte le colonne dove c'è la classe e la toglie
-        colonne_indietro.forEach(colonna => colonna.classList.remove("pedina-indietro-uno"))
-        
-    
-        if(posizionePedinaUno > 63){
-           
-            const caselleIndietro = posizionePedinaUno - 63
-            posizionePedinaUno = 63 - caselleIndietro
-            console.log("caselle indietro: " + caselleIndietro)
-    
-            const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1]);
-    
-            colonna.classList.add("pedina-indietro-uno");
-            playerUno == false 
-            playerDue == true
-            turno.innerHTML = "È il turno player due"
-    
-            // Esci dalla funzione se la pedina si muove indietro
-            return risultato;
-     
-        }
-        else if(posizionePedinaUno == 63){
-            alert("Player uno hai vinto!!!")
-            btn.setAttribute("disabled", "disabled")
-            const colonna = document.getElementById(Object.keys(caselle)[posizionePedina - 1 ])
-            colonna.classList.add("winner");
-            
-        }
-        // else if(posizionePedinaUno === 10){
-            
-        //     turnoFermo == 1
-        //     playerUno = false
-        //     playerDue = true
-        //     console.log ("stop player uno" + turnoFermo)
-        //     console.log("posizione uno: " + posizionePedinaUno)
-        // }
         else{
-            const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ])
-            colonna.classList.add("pedina-avanti-uno")
-            if (posizionePedinaUno == 10) {
-                turnoFermo = 2; // Imposta il numero di turni fermi sulla casella 10
-            } else {
-                passaTurno();
-            }
-            playerUno = false 
-            playerDue = true
-            turno.innerHTML = "È il turno player due"
-            console.log("posizione uno:" + posizionePedinaUno)
-            console.log("player uno: " + playerUno , "player due: " + playerDue)
+            muoviUno()
         }
 
-    }else if(playerDue = true  ){
-        turno.innerHTML = "turno giocatore due";
-        let risultato = Math.floor(Math.random() * (1, 6) + 1);
-        document.getElementById("result").innerHTML = "È uscito: " + risultato;
-        posizionePedinaDue += risultato 
-    
-        // elimina classe avanti
-        const colonne = document.querySelectorAll('.col-2-orrizontale , .col-2-verticale');
-        // cicla tutte le colonne dove c'è la classe e la toglie
-        colonne.forEach(colonna => colonna.classList.remove("pedina-avanti-due"));
-        // elimina classe indietro
-        const colonne_indietro = document.querySelectorAll('.col-2-orrizontale');
-        // cicla tutte le colonne dove c'è la classe e la toglie
-        colonne_indietro.forEach(colonna => colonna.classList.remove("pedina-indietro-due"))
-        
-    
-        if(posizionePedinaDue > 63){
-           
-            const caselleIndietro = posizionePedinaDue - 63
-            posizionePedinaDue = 63 - caselleIndietro
-            console.log("caselle indietro: " + caselleIndietro)
-    
-            const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1]);
-    
-            colonna.classList.add("pedina-indietro-due");
-            playerUno = true 
-            playerDue = false
-            turno.innerHTML = "È il turno player uno"
-    
-            // Esci dalla funzione se la pedina si muove indietro
-            return risultato;
-     
-        }
-        else if(posizionePedinaDue == 63){
-            alert("Player due hai vinto!!!")
-            btn.setAttribute("disabled", "disabled")
-            const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ])
-            colonna.classList.add("winner");
-            
-        }
-        // else if(posizionePedinaDue == 10){
-        //     turnoFermo == 2
-        //     playerUno = true
-        //     playerDue = false
-        //     console.log ("stop player due" + turnoFermo)
-        //     console.log("posizione due: " + posizionePedinaDue)
-        // }
-        else{
-            const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ])
-            colonna.classList.add("pedina-avanti-due")
-            if (posizionePedinaDue == 10) {
-                turnoFermo = 2; // Imposta il numero di turni fermi sulla casella 10
-            } else {
-                passaTurno();
-            }
-            playerUno = true 
-            playerDue = false
-            turno.innerHTML = "È il turno player uno"
-            console.log("posizione due:" + posizionePedinaDue)
+    }else if(playerDue === true  ){
+
+        if(turnoFermoDue > 0){
+            turnoFermoDue--
+        }else{
+            muoviDue()
+
         }
     }
 
@@ -180,11 +66,131 @@ function muoviPedina(){
     
 }
 
-function passaTurno() {
-    playerUno = !playerUno;
-    playerDue = !playerDue;
+function muoviUno(){
+    let risultato = Math.floor(Math.random() * (1, 6) + 1);
+    document.getElementById("result").innerHTML = "È uscito: " + risultato;
+    posizionePedinaUno += risultato 
 
+    // elimina classe avanti
+    const colonne = document.querySelectorAll('.col-2-orrizontale , .col-2-verticale');
+    // cicla tutte le colonne dove c'è la classe e la toglie
+    colonne.forEach(colonna => colonna.classList.remove("pedina-avanti-uno"));
+    // elimina classe indietro
+    const colonne_indietro = document.querySelectorAll('.col-2-orrizontale');
+    // cicla tutte le colonne dove c'è la classe e la toglie
+    colonne_indietro.forEach(colonna => colonna.classList.remove("pedina-indietro-uno"))
+    
 
+    if(posizionePedinaUno > 63){
+       
+        const caselleIndietro = posizionePedinaUno - 63
+        posizionePedinaUno = 63 - caselleIndietro
+        console.log("caselle indietro: " + caselleIndietro)
+
+        const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1]);
+
+        colonna.classList.add("pedina-indietro-uno");
+        playerUno == false 
+        playerDue == true
+        turno.innerHTML = "È il turno player due"
+
+        // Esci dalla funzione se la pedina si muove indietro
+        return risultato;
+ 
+    }
+    else if(posizionePedinaUno == 63){
+        alert("Player uno hai vinto!!!")
+        btn.setAttribute("disabled", "disabled")
+        const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ])
+        colonna.classList.add("winner");
+        
+    }
+    else if(posizionePedinaUno == 10){
+        const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ])
+        colonna.classList.add("pedina-stop-uno");
+        passaTurnoUno()
+        
+    }
+    else{
+        const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ])
+        colonna.classList.add("pedina-avanti-uno")
+        playerUno = false 
+        playerDue = true
+        turno.innerHTML = "È il turno player due"
+        console.log("posizione uno:" + posizionePedinaUno)
+        console.log("player uno: " + playerUno , "player due: " + playerDue)
+    }
+   }
+
+function muoviDue(){
+    turno.innerHTML = "turno giocatore due";
+    let risultato = Math.floor(Math.random() * (1, 6) + 1);
+    document.getElementById("result").innerHTML = "È uscito: " + risultato;
+    posizionePedinaDue += risultato 
+
+    // elimina classe avanti
+    const colonne = document.querySelectorAll('.col-2-orrizontale , .col-2-verticale');
+    // cicla tutte le colonne dove c'è la classe e la toglie
+    colonne.forEach(colonna => colonna.classList.remove("pedina-avanti-due"));
+    // elimina classe indietro
+    const colonne_indietro = document.querySelectorAll('.col-2-orrizontale');
+    // cicla tutte le colonne dove c'è la classe e la toglie
+    colonne_indietro.forEach(colonna => colonna.classList.remove("pedina-indietro-due"))
+    
+
+    if(posizionePedinaDue > 63){
+       
+        const caselleIndietro = posizionePedinaDue - 63
+        posizionePedinaDue = 63 - caselleIndietro
+        console.log("caselle indietro: " + caselleIndietro)
+
+        const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1]);
+
+        colonna.classList.add("pedina-indietro-due");
+        playerUno = true 
+        playerDue = false
+        turno.innerHTML = "È il turno player uno"
+
+        // Esci dalla funzione se la pedina si muove indietro
+        return risultato;
+ 
+    }
+    else if(posizionePedinaDue == 63){
+        alert("Player due hai vinto!!!")
+        btn.setAttribute("disabled", "disabled")
+        const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ])
+        colonna.classList.add("winner");
+        
+    }
+    else if(posizionePedinaDue == 10){
+        const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ])
+        colonna.classList.add("pedina-stop-due");
+        passaTurnoDue() // Imposta il numero di turni fermi sulla casella 10
+        
+    }
+    else{
+        const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ])
+        colonna.classList.add("pedina-avanti-due")
+
+        playerUno = true 
+        playerDue = false
+        turno.innerHTML = "È il turno player uno"
+        console.log("posizione due:" + posizionePedinaDue)
+    }
+}
+
+function passaTurnoUno() {
+    if (posizionePedinaUno === 10) {
+        playerUno = !playerUno;
+        turnoFermoUno = 2; // Imposta il numero di turni fermi sulla casella 10 per il playerUno
+    }
+}
+
+function passaTurnoDue() {
+    if (posizionePedinaDue === 10) {
+        playerDue = !playerDue;
+        turnoFermoDue = 2; // Imposta il numero di turni fermi sulla casella 10 per il playerDue
+    }
 }
 
 

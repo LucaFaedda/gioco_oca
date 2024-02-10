@@ -113,6 +113,16 @@ body{
     background-color: rgb(0, 255, 170);
 }
 
+.pedina-stop-uno{
+    border-color: brown;
+    border-width: 5px;
+}
+
+.pedina-stop-due{
+    border-color: rgb(118, 165, 42);
+    border-width: 5px;
+}
+
 .winner{
     background-color: yellow;
 }
