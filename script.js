@@ -106,8 +106,14 @@ function muoviUno(){
         colonna.classList.add("winner");
         
     }
-    else if( posizionePedinaUno == 10 || posizionePedinaUno == 25){
-        passaTurnoUno()
+    else if( posizionePedinaUno == 10 || posizionePedinaUno == 25 || posizionePedinaUno == 54){
+        passaUnTurnoUno()
+        playerUno = false
+        playerDue = true
+    }
+    else if(posizionePedinaUno == 35 || posizionePedinaUno == 55){
+
+        passaDueTurnoUno()
         playerUno = false
         playerDue = true
     }
@@ -163,9 +169,15 @@ function muoviDue(){
         colonna.classList.add("winner");
         
     }
-    else if(posizionePedinaDue == 10 || posizionePedinaDue == 25){
+    else if(posizionePedinaDue == 10 || posizionePedinaDue == 25 || posizionePedinaDue == 54){
 
-        passaTurnoDue()
+        passaUnTurnoDue()
+        playerDue = false
+        playerUno = true
+    }
+    else if(posizionePedinaDue == 35 || posizionePedinaDue == 55){
+
+        passaDueTurnoDue()
         playerDue = false
         playerUno = true
     }
@@ -179,22 +191,36 @@ function muoviDue(){
     }
 }
 
-function passaTurnoUno() {
+
+// funzioni caselle speciali
+
+
+function passaUnTurnoUno() {
     const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ])
     colonna.classList.add("pedina-stop-uno");
     playerUno = !playerUno;
-    turnoFermoUno = 1; 
-       // Imposta il numero di turni fermi sulla casella 10 per il playerUno
-    
+    turnoFermoUno = 1;     
 }
 
-function passaTurnoDue() {
+function passaUnTurnoDue() {
     const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ])
     colonna.classList.add("pedina-stop-due")
     playerDue = !playerDue;
     turnoFermoDue = 1;
-        // Imposta il numero di turni fermi sulla casella 10 per il playerDue
-    
+}
+
+function passaDueTurnoUno() {
+    const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ])
+    colonna.classList.add("pedina-stop-uno");
+    playerUno = !playerUno;
+    turnoFermoUno = 2;     
+}
+
+function passaDueTurnoDue() {
+    const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ])
+    colonna.classList.add("pedina-stop-due")
+    playerDue = !playerDue;
+    turnoFermoDue = 2;
 }
 
 
