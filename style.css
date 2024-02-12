@@ -5,7 +5,7 @@
 }
 
 body{
-    background-color: rgb(14, 14, 95);
+    background-color: #006494;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -47,22 +47,24 @@ body{
 
 .col-2-orrizontale{
     width: calc(100% / 12);
-    border: 1px solid red;
-    height: 40px;
+    border: 0.5px solid rgb(8, 8, 8);
+    height: 80px;
     background-color: azure;
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .col-2-verticale{
     width: calc(100% / 12); /* La stessa larghezza delle colonne orizzontali */
-    border: 1px solid red;
-    height: 40px;
+    border: 0.5px solid rgb(8, 8, 8);
+    height: 80px;
     background-color: azure;
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .col-12{
@@ -76,6 +78,13 @@ body{
 .numero-casella{
     font-weight: 500;
     color: black;
+    padding: 5px;
+    display: inline;
+    background-color: white;
+    position: absolute;
+    border-radius: 50%;
+    top: 5px;
+    left: 5px;
 }
 
 #result{
@@ -95,10 +104,26 @@ body{
 
 /* sezione pedine */
 
-
+.pedina-avanti-uno-scompare{
+    content: url('./img/pedina_rossa_nobg.png');
+    animation:indietro 3s ;
+}
 
 .pedina-avanti-uno{
-    background-color: red;
+    content: url('./img/pedina_rossa_nobg.png');
+    animation: avanzamento 3s;
+}
+
+@keyframes avanzamento{
+    0% { opacity: 0;}
+    50% {opacity: 0.5;}
+    100% {opacity: 1;}
+}
+
+@keyframes indietro{
+    0% { opacity:1;}
+    50% {opacity: 0.5;}
+    100% {opacity: 0;}
 }
 
 .pedina-indietro-uno{
@@ -106,7 +131,7 @@ body{
 }
 
 .pedina-avanti-due{
-    background-color: rgb(0, 4, 255);
+    content: url('./img/pedina_blu_nobg.png');
 }
 
 .pedina-indietro-due{
@@ -136,17 +161,36 @@ body{
     text-align: center;
 }
 
-#player-uno{
-    background-color: red;
+#player-uno img, #player-due img{
+    width: 50%;
 }
 
-#player-due{
-    background-color: blue;
-}
+
 
 #turno{
     color: #fff;
     font-family: 'Roboto', sans-serif;
     text-align: center;
     margin: 3rem 0rem;
+}
+
+/* sezione caselle speciali */
+
+#dieci, #venticinque, #cinquantaquattro{
+    background-image: url('../gioco_oca/img/stop.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+#trentacinque, #cinquantacinque{
+    background-image: url('../gioco_oca/img/doppiostop.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#nove, #ventisette, #quarantacinque{
+    background-image: url('../gioco_oca/img/ritira.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }

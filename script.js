@@ -12,7 +12,7 @@ let turnoFermoDue = 0;
 let turno = document.getElementById("turno");
 let count = 0
 
-
+let ritiraTimeDue; 
 const numeriColonne = [
     "uno", "due", "tre", "quattro", "cinque", "sei",
     "sette", "otto", "nove", "dieci", "undici", "dodici",
@@ -68,6 +68,7 @@ function muoviPedina(){
 }
 
 function muoviUno(){
+   
     let risultato = Math.floor(Math.random() * (1, 6) + 1);
     document.getElementById("result").innerHTML = "È uscito: " + risultato;
     posizionePedinaUno += risultato 
@@ -116,6 +117,10 @@ function muoviUno(){
         passaDueTurnoUno()
         playerUno = false
         playerDue = true
+    }
+    else if(posizionePedinaUno == 9 || posizionePedinaUno == 27 || posizionePedinaUno == 45 ){
+        ritiraUno()
+
     }
     else{
         const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ])
@@ -181,13 +186,18 @@ function muoviDue(){
         playerDue = false
         playerUno = true
     }
+    else if(posizionePedinaDue == 9 || posizionePedinaDue == 27 || posizionePedinaDue == 45 ){
+        ritiraDue()
+
+
+    }
 
     else{
         const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ])
         colonna.classList.add("pedina-avanti-due")
         playerUno = true 
         playerDue = false
-       
+        turno.innerHTML = "È il turno player uno"
     }
 }
 
@@ -222,6 +232,22 @@ function passaDueTurnoDue() {
     playerDue = !playerDue;
     turnoFermoDue = 2;
 }
+
+function ritiraUno(){
+    console.log("ritira uno time function")
+    const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ])
+    colonna.classList.add("pedina-avanti-uno")
+
+
+}
+
+function ritiraDue(){
+    console.log("ritira due time function")
+    const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ])
+    colonna.classList.add("pedina-avanti-due")
+
+}
+
 
 
 
