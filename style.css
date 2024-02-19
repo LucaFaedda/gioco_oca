@@ -5,14 +5,30 @@
 }
 
 body{
-    background-color: #006494;
-    font-family: 'Roboto', sans-serif;
+
+    background: rgb(30,30,36);
+    background: linear-gradient(356deg, rgba(30,30,36,1) 30%, rgba(106,142,174,1) 91%);
+
 }
+
+/* sezione container */
 
 .container{
     width: 1000px;
-    margin: 0 auto;
-    margin-top: 5rem;
+    margin: 50px 550px;
+    padding: 50px;
+}
+
+.container-laterale{
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:#080707;
+    height: 100%;
+    color: white;
+
 }
 
 /* sezione row */
@@ -34,34 +50,51 @@ body{
 }
 
 .row-dado{
-    justify-content: center;
     margin-top: 5rem;
 }
 
-.row-giocatori{
-    margin: 3rem 0rem;
-    justify-content: space-evenly;
+.row-dado .col-12{
+    display: flex;
+    flex-direction: column;
 }
+
+.row-dado, .row-giocatori, .row-legenda{
+    margin: 0 1rem
+
+    
+}
+
+.row-giocatori{
+    margin-top: 3rem ;
+}
+
+.row-legenda{
+    margin-top: 3rem;
+    padding: 0.5rem;
+    border-radius: 30px;
+    background: #dddddd1c;
+    box-shadow: 0px 0px 10px 1px;
+}
+
 
 /* sezione col */
 
+
 .col-2-orrizontale{
-    width: calc(100% / 12);
+    width: calc(100% / 11);
     border: 0.5px solid rgb(8, 8, 8);
     height: 80px;
-    background-color: azure;
-    /* display: flex; */
+    background-color: #C3D2D5;
     align-items: center;
     justify-content: center;
     position: relative;
 }
 
 .col-2-verticale{
-    width: calc(100% / 12); /* La stessa larghezza delle colonne orizzontali */
+    width: calc(100% / 11); /* La stessa larghezza delle colonne orizzontali */
     border: 0.5px solid rgb(8, 8, 8);
     height: 80px;
-    background-color: azure;
-    /* display: flex; */
+    background-color: #C3D2D5;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -73,7 +106,42 @@ body{
     align-items: center;
 }
 
-/* sezione classi generiche */
+.row-legenda .col-12{
+    justify-content: center;
+}
+
+/* SEZIONE CLASSI GENERICHE */
+
+/* classi bordi  */
+
+#uno{
+    border-radius: 15px 0 0 15px;
+}
+
+#undici, #trentanove{
+    border-radius:0 15px 0 0 ;
+}
+
+#quindici, #quarantatre{
+    border-radius: 0 0 15px 0;
+}
+
+#venticinque, #cinquantatre{
+    border-radius:  15px 0 0 0 ;
+}
+
+#ventinove, #cinquantasette{
+    border-radius: 0 0 0 15px;
+}
+
+#sessantatre{
+    border-radius: 0 15px 15px 0;
+}
+
+/* classi numero caselle */
+#uno .numero-casella, #due .numero-casella, #tre .numero-casella, #quattro .numero-casella, #cinque .numero-casella, #sei .numero-casella, #sette .numero-casella, #otto .numero-casella, #nove .numero-casella{
+    padding: 5px 10px;
+} 
 
 .numero-casella{
     font-weight: 500;
@@ -87,44 +155,105 @@ body{
     left: 5px;
 }
 
-#result{
-    font-weight: 500;
-    color: red;
-    margin-left: 2rem;
-}
+
 
 #dado{
-    padding: 10px 20px;
-    background-color: rgba(121, 3, 231, 0.74);
+    padding: .75rem 1.25rem;
+	border-radius: 10rem;
     cursor: pointer;
     color: #fff;
-    border-radius: 15px;
+    width: 50%;
+    margin: 2rem auto;
+    text-transform: uppercase;
+    position: relative;
+    transition: all 1s;
+    z-index: 1; 
+    letter-spacing: .15rem;
+	overflow: hidden; 
+
+
+}
+
+#dado::after{
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #0cf;
+    border-radius:10rem;
+    bottom: 0;
+    left: 0;
+    z-index: -2;
     
+}
+
+#dado::before{
+    display: inline-block;
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    z-index: -1;
+    background-color: rgb(7, 91, 112);
+    transition: all 1s;
+    border-radius: 10rem;
+}
+
+#dado:hover{
+    color: #fff;
+}
+
+#dado:hover:before{
+    width: 100%;
+}
+
+/* sezione sidebar laterale */
+
+.lista-legenda{
+    list-style: none;
+
+}
+
+li:first-child{
+    margin-bottom: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #F9DC5C;
+
+}
+
+li{
+    margin: 1rem 0;
+}
+
+.testo-speciale{
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    margin-right: 0.5rem;
+}
+
+.numeri-speciali{
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 0.8rem;
+}
+
+.row-dado.col-12{
+    display: flex;
 }
 
 /* sezione pedine */
 
-.pedina-avanti-uno-scompare{
-    content: url('./img/pedina_rossa_nobg.png');
-    animation:indietro 3s ;
-}
 
 .pedina-avanti-uno{
     content: url('./img/pedina_rossa_nobg.png');
-    animation: avanzamento 3s;
+
 }
 
-@keyframes avanzamento{
-    0% { opacity: 0;}
-    50% {opacity: 0.5;}
-    100% {opacity: 1;}
-}
-
-@keyframes indietro{
-    0% { opacity:1;}
-    50% {opacity: 0.5;}
-    100% {opacity: 0;}
-}
 
 .pedina-indietro-uno{
     background-color: rgb(255, 166, 0);
@@ -161,17 +290,32 @@ body{
     text-align: center;
 }
 
+#player-uno, #player-due{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+
 #player-uno img, #player-due img{
     width: 50%;
+    filter: drop-shadow(7px 5px 1px white);
 }
+
 
 
 
 #turno{
     color: #fff;
-    font-family: 'Roboto', sans-serif;
     text-align: center;
     margin: 3rem 0rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
 }
 
 /* sezione caselle speciali */
@@ -194,3 +338,87 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+/* modale */
+
+.modal{
+    height: 500px;
+    width: 800px;
+    border-radius: 12px;
+    background-color:white;
+    z-index: 10;
+    position: fixed;
+    top: 150px;
+
+}
+
+.header-modal{
+    display: flex;
+    flex-direction: row-reverse;
+    height: 50px;
+    align-items: center;
+}
+
+.close{
+    display: flex;
+    height: 30px;
+    width: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.close:hover{
+    cursor: pointer;
+    background-color: #ecf0f1;
+    transition: transform 0.25s
+}
+
+
+#modal-show{
+    display:none
+}
+
+/* costruzuione dado */
+
+#dice{
+    width: 100px;
+    height: 100px;
+    border: 2px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    margin: 3rem 0 0 3rem;
+    transform: rotate(0deg);
+    position: relative;
+    
+
+
+}
+
+.rotate-dice{
+    animation: rotazione 5s  ease-out ;
+  
+}
+
+.opacity-dice{
+    opacity: 0;
+}
+
+@keyframes rotazione {
+    0%
+    {
+        transform: rotate(0deg);
+        left:0px ;
+        
+    }
+    100%
+    {
+        transform: rotate(360deg);
+        left: 600px;
+    }
+
+}
+

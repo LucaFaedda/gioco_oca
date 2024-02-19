@@ -4,29 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <!-- link font google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- link fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Protest+Revolution&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <title>Document</title>
+    
+    <title>Gioco di Luoca</title>
 </head>
 <body>
-    <div class="container">
-        <div class="row-giocatori" id="player">
+    <div class="container-laterale">
+        <div class="row-giocatori" >
             <div class="col-6">
-                <div id="player-uno"><h2>Player Uno</h2><img src="./img/pedina_rossa_nobg.png" alt="player-uno"></div>
+                <div id="player-uno">
+                    <h2>P1</h2><img src="./img/pedina_rossa_nobg.png" alt="player-uno">
+                </div>
             </div>
             <div class="col-6">
-                <div id="player-due"><h2>Player Due</h2><img src="./img/pedina_blu_nobg.png" alt="player-due"></div>
+                <div id="player-due">
+                    <h2>P2</h2><img src="./img/pedina_blu_nobg.png" alt="player-due">
+                </div>
+            </div>
+        </div>
+        <div class="row-legenda">
+            <div class="col-12">
+                <ul class="lista-legenda">
+                    <li><h2>Caselle speciali</h2></li>
+                    <li><span class="testo-speciale">Stop un turno:</span> <span class="numeri-speciali">10 | 25 | 54</span></li>
+                    <li><span class="testo-speciale">Stop due turni:</span> <span class="numeri-speciali">35 | 55</span></li>
+                    <li><span class="testo-speciale">Ritira:</span><span class="numeri-speciali"> 9 | 27 | 45</span> </li>
+                    <li></li>
+                    <li></li>
+                </ul>
             </div>
         </div>
         <div class="row-dado">
             <div class="col-12">
                 <button id="dado" onclick="lanciaDado()">lancia</button>
-                <p id="result">È uscito: </p>
+               
             </div>
         </div>
-        <h2 id="turno"></h2>
+        
+    </div>
+    <h2 id="turno"></h2>
+    <div class="container">
         <div class="row-orrizontale">
             <div class="col-2-orrizontale" id="uno"><p class="numero-casella">1</p></div>
             <div class="col-2-orrizontale" id="due"><p class="numero-casella">2</p></div>
@@ -39,9 +62,9 @@
             <div class="col-2-orrizontale" id="nove"><p class="numero-casella">9</p></div>
             <div class="col-2-orrizontale" id="dieci"><p class="numero-casella">10</p></div>
             <div class="col-2-orrizontale" id="undici"><p class="numero-casella">11</p></div>
-            <div class="col-2-orrizontale" id="dodici"><p class="numero-casella">12</p></div>
         </div>
         <div class="row-verticale">
+            <div class="col-2-verticale" id="dodici"><p class="numero-casella">12</p></div>
             <div class="col-2-verticale" id="tredici"><p class="numero-casella">13</p></div>
             <div class="col-2-verticale" id="quattordici"><p class="numero-casella">14</p></div>
         </div>
@@ -57,9 +80,9 @@
             <div class="col-2-orrizontale" id="ventitre"><p class="numero-casella">23</p></div>
             <div class="col-2-orrizontale" id="ventiquattro"><p class="numero-casella">24</p></div>
             <div class="col-2-orrizontale" id="venticinque"><p class="numero-casella">25</p></div>
-            <div class="col-2-orrizontale" id="ventisei"><p class="numero-casella">26</p></div>
         </div>
         <div class="row-verticale-2">
+            <div class="col-2-verticale" id="ventisei"><p class="numero-casella">26</p></div>
             <div class="col-2-verticale" id="ventisette"><p class="numero-casella">27</p></div>
             <div class="col-2-verticale" id="ventotto"><p class="numero-casella">28</p></div>
         </div>
@@ -75,9 +98,9 @@
             <div class="col-2-orrizontale" id="trentasette"><p class="numero-casella">37</p></div>
             <div class="col-2-orrizontale" id="trentotto"><p class="numero-casella">38</p></div>
             <div class="col-2-orrizontale" id="trentanove"><p class="numero-casella">39</p></div>
-            <div class="col-2-orrizontale" id="quaranta"><p class="numero-casella">40</p></div>
         </div>
         <div class="row-verticale">
+            <div class="col-2-verticale" id="quaranta"><p class="numero-casella">40</p></div>
             <div class="col-2-verticale" id="quarantuno"><p class="numero-casella">41</p></div>
             <div class="col-2-verticale" id="quarantadue"><p class="numero-casella">42</p></div>
         </div>
@@ -93,9 +116,9 @@
             <div class="col-2-orrizontale" id="cinquantuno"><p class="numero-casella">51</p></div>
             <div class="col-2-orrizontale" id="cinquantadue"><p class="numero-casella">52</p></div>
             <div class="col-2-orrizontale" id="cinquantatre"><p class="numero-casella">53</p></div>
-            <div class="col-2-orrizontale" id="cinquantaquattro"><p class="numero-casella">54</p></div>
         </div>
         <div class="row-verticale-2">
+            <div class="col-2-verticale" id="cinquantaquattro"><p class="numero-casella">54</p></div>
             <div class="col-2-verticale" id="cinquantacinque"><p class="numero-casella">55</p></div>
             <div class="col-2-verticale" id="cinquantasei"><p class="numero-casella">56</p></div>
         </div>
@@ -109,22 +132,17 @@
             <div class="col-2-orrizontale" id="sessantatre"><p class="numero-casella">63</p></div>
 
         </div>
-        <!-- <div class="row-dado">
-            <div class="col-12">
-                <button id="dado" onclick="lanciaDado()">lancia</button>
-                <p id="result">È uscito: </p>
-            </div>
-        </div> -->
-        <div class="row-dado">
-            <div class="col-12">
-                <ul>
-                    <li><h2>caselle speciali:</h2></li>
-                    <li>stop un turno: 10, 25, 54 </li>
-                    <li>stop due turni: 35, 55 </li>
-                    <li>ritira: 9, 27, 45 </li>
-                    <li></li>
-                    <li></li>
-                </ul>>
+            <div class="modal" id="modal-show">
+                <div class="header-modal">
+                    <div class="close"  onclick="closeModal()"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+                <div class="body-modal">
+                    <!-- <h3 id="result">È uscito: </h3> -->
+                    <h4 id="stop"></h4>
+                    <h4 id="stop-due"></h4>
+                    <h4 id="rilancia"></h4>
+                    <div id="dice" onclick="rotateDice()"><h3 id="result"></h3></div>
+                </div>
             </div>
         </div>
 

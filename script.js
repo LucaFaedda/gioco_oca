@@ -1,18 +1,21 @@
 
-
+let dadoRotate = document.getElementById("dice");
+let btn = document.getElementById("dado");
+let turno = document.getElementById("turno");
+let showModal = document.getElementById("modal-show");
+const containerGrande = document.getElementsByClassName(".container")
 let posizionePedinaUno = 0;
 let posizionePedinaDue = 0;
 let risulato = " ";
 let caselle = {};
-let btn = document.getElementById("dado");
 let playerUno = true;
 let playerDue = false;
 let turnoFermoUno = 0;
 let turnoFermoDue = 0;
-let turno = document.getElementById("turno");
-let count = 0
-
+let count = 0;
 let ritiraTimeDue; 
+
+
 const numeriColonne = [
     "uno", "due", "tre", "quattro", "cinque", "sei",
     "sette", "otto", "nove", "dieci", "undici", "dodici",
@@ -68,9 +71,10 @@ function muoviPedina(){
 }
 
 function muoviUno(){
-   
+    rotateDice();
     let risultato = Math.floor(Math.random() * (1, 6) + 1);
-    document.getElementById("result").innerHTML = "È uscito: " + risultato;
+    document.getElementById("result").innerHTML =  risultato;
+    
     posizionePedinaUno += risultato 
     
 
@@ -109,17 +113,22 @@ function muoviUno(){
     }
     else if( posizionePedinaUno == 10 || posizionePedinaUno == 25 || posizionePedinaUno == 54){
         passaUnTurnoUno()
+        document.getElementById("stop").innerHTML = "Fermo UN turno";
+        setTimeout(closeStop, 2000)
         playerUno = false
         playerDue = true
     }
-    else if(posizionePedinaUno == 35 || posizionePedinaUno == 55){
-
+    else if(posizionePedinaUno == 35 || posizionePedinaUno == 55 ){
         passaDueTurnoUno()
+        document.getElementById("stop-due").innerHTML = "Fermo DUE turni";
+        setTimeout(closeStopDue, 2000)
         playerUno = false
         playerDue = true
     }
     else if(posizionePedinaUno == 9 || posizionePedinaUno == 27 || posizionePedinaUno == 45 ){
         ritiraUno()
+        document.getElementById("rilancia").innerHTML = "Ritira";
+        setTimeout(rilancia, 2000);
 
     }
     else{
@@ -133,9 +142,11 @@ function muoviUno(){
    }
 
 function muoviDue(){
+    rotateDice()
     turno.innerHTML = "turno giocatore due";
     let risultato = Math.floor(Math.random() * (1, 6) + 1);
-    document.getElementById("result").innerHTML = "È uscito: " + risultato;
+    
+    document.getElementById("result").innerHTML =  risultato;
     posizionePedinaDue += risultato 
     console.log("è uscito: " + risultato)
 
@@ -175,19 +186,23 @@ function muoviDue(){
         
     }
     else if(posizionePedinaDue == 10 || posizionePedinaDue == 25 || posizionePedinaDue == 54){
-
         passaUnTurnoDue()
+        document.getElementById("stop").innerHTML = "Fermo UN turno";
+        setTimeout(closeStop, 2000)
         playerDue = false
         playerUno = true
     }
     else if(posizionePedinaDue == 35 || posizionePedinaDue == 55){
-
         passaDueTurnoDue()
+        document.getElementById("stop-due").innerHTML = "Fermo DUE turni";
+        setTimeout(closeStopDue, 2000)
         playerDue = false
         playerUno = true
     }
     else if(posizionePedinaDue == 9 || posizionePedinaDue == 27 || posizionePedinaDue == 45 ){
         ritiraDue()
+        document.getElementById("rilancia").innerHTML = "Ritira";
+        setTimeout(rilancia, 2000);
 
 
     }
@@ -248,14 +263,40 @@ function ritiraDue(){
 
 }
 
+// funzioni modale
 
+function closeModal(){
+   showModal.style.display = "none";
+   dadoRotate.classList.remove("rotate-dice")
 
+}
 
+function closeStop(){
+    document.getElementById("stop").innerHTML = "  ";
+}
+
+function closeStopDue(){
+    document.getElementById("stop-due").innerHTML = "  ";
+}
+
+function rilancia(){
+    document.getElementById("rilancia").innerHTML = " ";
+}
+
+// funzione rotazione dado
+
+function rotateDice(){
+   
+    dadoRotate.classList.add("rotate-dice");
+}
+
+function diceOpacity(){
+    dadoRotate.classList.add("opacity-dice");
+}
 function lanciaDado(){
-    
-
     muoviPedina()
-
+    showModal.style.display = "block";
+    // setTimeout(closeModal, 3000);
 }
 
 
