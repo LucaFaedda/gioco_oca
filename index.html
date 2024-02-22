@@ -141,12 +141,26 @@
                     <h4 id="stop"></h4>
                     <h4 id="stop-due"></h4>
                     <h4 id="rilancia"></h4>
-                    <div id="dice" onclick="rotateDice()"><h3 id="result"></h3></div>
+                    <div id="dice" onclick="rotateDice()" >
+                        <div class="front background-face"></div>
+                        <div class="back background-face"></div>
+                        <div class="top background-face"></div>
+                        <div class="left background-face"></div>
+                        <div class="right background-face"></div>
+                        <div class="bottom background-face"></div>
+                    </div>
+                    <h3 id="result"></h3>
                 </div>
             </div>
         </div>
 
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<!-- RoughEase, ExpoScaleEase and SlowMo are all included in the EasePack file -->    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/EasePack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
     <script src="script.js"></script>
+    
 </body>
 </html>

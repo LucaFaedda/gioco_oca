@@ -377,7 +377,14 @@ li{
 
 
 #modal-show{
-    display:none
+    /* display:none */
+    display: flex;
+    justify-content: center;
+
+}
+
+.body-modal{
+    align-self: center;
 }
 
 /* costruzuione dado */
@@ -385,40 +392,78 @@ li{
 #dice{
     width: 100px;
     height: 100px;
-    border: 2px solid;
-    display: flex;
+    left: 40%;
+    top: 60%;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     font-size: 25px;
-    margin: 3rem 0 0 3rem;
-    transform: rotate(0deg);
     position: relative;
-    
+    transform-style: preserve-3d;
+    transform: rotateX(135deg) rotateY(-217deg) rotateZ(-88deg);
+    animation: rotazione 1s linear;
 
+}
 
+#dice div{
+    position: absolute;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    border: 1px solid white;
+}
+
+/* lato facce */
+
+.background-face{
+    background-color:#000;
+
+}
+
+.front{
+    transform: translateZ(0px);
+}
+
+.back{
+    transform: translateZ(-100px) rotateY(180deg);
+}
+
+.right{
+    transform-origin: top right;
+    transform: rotateY(-270deg) translateX(100px);
+}
+
+.left{
+    transform-origin: center left;
+    transform: rotateY(270deg) translateX(-100px);
+}
+
+.top{
+    transform-origin: top center;
+    transform: rotateX(-270deg) translateY(-100px);
+}
+
+.bottom{
+    transform-origin: bottom center;
+    transform: rotateX(270deg) translateY(100px);
 }
 
 .rotate-dice{
-    animation: rotazione 5s  ease-out ;
+    /* animation: rotazione 3s  ease-out ; */
   
 }
 
-.opacity-dice{
+
+
+/* .opacity-dice{
     opacity: 0;
-}
+} */
 
 @keyframes rotazione {
-    0%
-    {
-        transform: rotate(0deg);
-        left:0px ;
-        
-    }
-    100%
-    {
-        transform: rotate(360deg);
-        left: 600px;
-    }
+ 
+    0%{transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);}
+    50%{transform: rotateX(126deg) rotateY(127deg) rotateZ(245deg);}
+    100%{transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);}
 
 }
 

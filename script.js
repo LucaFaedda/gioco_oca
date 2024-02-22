@@ -14,6 +14,8 @@ let turnoFermoUno = 0;
 let turnoFermoDue = 0;
 let count = 0;
 let ritiraTimeDue; 
+let duration = 2;
+
 
 
 const numeriColonne = [
@@ -285,19 +287,21 @@ function rilancia(){
 
 // funzione rotazione dado
 
+
 function rotateDice(){
    
-    dadoRotate.classList.add("rotate-dice");
+   
+    // dadoRotate.classList.add("rotate-dice");
 }
 
 function diceOpacity(){
-    dadoRotate.classList.add("opacity-dice");
 }
 function lanciaDado(){
     muoviPedina()
-    showModal.style.display = "block";
+    showModal.style.display = "flex";
     // setTimeout(closeModal, 3000);
 }
+
 
 
 
