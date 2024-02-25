@@ -73,10 +73,32 @@ function muoviPedina(){
 }
 
 function muoviUno(){
-    rotateDice();
     let risultato = Math.floor(Math.random() * (1, 6) + 1);
-    document.getElementById("result").innerHTML =  risultato;
+    switch(risultato){
+        case 1:
+            dadoRotate.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            break;
+        case 2:
+            dadoRotate.style.transform = 'rotateX(180deg) rotateY(0deg)';
+            break;
+        case 3:
+            dadoRotate.style.transform = 'rotateX(-90deg) rotateY(0deg)';
+            break;
+        case 5:
+            dadoRotate.style.transform = 'rotateX(0deg) rotateY(270deg)';
+            break;
+        case 4:
+            dadoRotate.style.transform = 'rotateX(0deg) rotateY(90deg)';
+            break;
+        case 6:
+            dadoRotate.style.transform = 'rotateX(90deg) rotateY(0deg)';
+            break;
+        default:
+            break;
+    }
     
+    document.getElementById("result").innerHTML =  risultato;
+    dadoRotate.classList.add("rotate-dice");
     posizionePedinaUno += risultato 
     
 
@@ -116,6 +138,7 @@ function muoviUno(){
     else if( posizionePedinaUno == 10 || posizionePedinaUno == 25 || posizionePedinaUno == 54){
         passaUnTurnoUno()
         document.getElementById("stop").innerHTML = "Fermo UN turno";
+        document.getElementById("stop").classList.add("stop");
         setTimeout(closeStop, 2000)
         playerUno = false
         playerDue = true
@@ -123,6 +146,7 @@ function muoviUno(){
     else if(posizionePedinaUno == 35 || posizionePedinaUno == 55 ){
         passaDueTurnoUno()
         document.getElementById("stop-due").innerHTML = "Fermo DUE turni";
+        document.getElementById("stop-due").classList.add("stop");
         setTimeout(closeStopDue, 2000)
         playerUno = false
         playerDue = true
@@ -130,6 +154,7 @@ function muoviUno(){
     else if(posizionePedinaUno == 9 || posizionePedinaUno == 27 || posizionePedinaUno == 45 ){
         ritiraUno()
         document.getElementById("rilancia").innerHTML = "Ritira";
+        document.getElementById("rilancia").classList.add("rilancia");
         setTimeout(rilancia, 2000);
 
     }
@@ -144,11 +169,32 @@ function muoviUno(){
    }
 
 function muoviDue(){
-    rotateDice()
-    turno.innerHTML = "turno giocatore due";
     let risultato = Math.floor(Math.random() * (1, 6) + 1);
-    
+    switch(risultato){
+        case 1:
+            dadoRotate.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            break;
+        case 2:
+            dadoRotate.style.transform = 'rotateX(180deg) rotateY(0deg)';
+            break;
+        case 3:
+            dadoRotate.style.transform = 'rotateX(-90deg) rotateY(0deg)';
+            break;
+        case 5:
+            dadoRotate.style.transform = 'rotateX(0deg) rotateY(270deg)';
+            break;
+        case 4:
+            dadoRotate.style.transform = 'rotateX(0deg) rotateY(90deg)';
+            break;
+        case 6:
+            dadoRotate.style.transform = 'rotateX(90deg) rotateY(0deg)';
+            break;
+        default:
+            break;
+    }
     document.getElementById("result").innerHTML =  risultato;
+    dadoRotate.classList.add("rotate-dice");
+    turno.innerHTML = "turno giocatore due";
     posizionePedinaDue += risultato 
     console.log("è uscito: " + risultato)
 
@@ -190,6 +236,7 @@ function muoviDue(){
     else if(posizionePedinaDue == 10 || posizionePedinaDue == 25 || posizionePedinaDue == 54){
         passaUnTurnoDue()
         document.getElementById("stop").innerHTML = "Fermo UN turno";
+        document.getElementById("stop").classList.add("stop");
         setTimeout(closeStop, 2000)
         playerDue = false
         playerUno = true
@@ -197,6 +244,7 @@ function muoviDue(){
     else if(posizionePedinaDue == 35 || posizionePedinaDue == 55){
         passaDueTurnoDue()
         document.getElementById("stop-due").innerHTML = "Fermo DUE turni";
+        document.getElementById("stop-due").classList.add("stop");
         setTimeout(closeStopDue, 2000)
         playerDue = false
         playerUno = true
@@ -204,6 +252,7 @@ function muoviDue(){
     else if(posizionePedinaDue == 9 || posizionePedinaDue == 27 || posizionePedinaDue == 45 ){
         ritiraDue()
         document.getElementById("rilancia").innerHTML = "Ritira";
+        document.getElementById("rilancia").classList.add("rilancia");
         setTimeout(rilancia, 2000);
 
 
@@ -217,6 +266,7 @@ function muoviDue(){
         turno.innerHTML = "È il turno player uno"
     }
 }
+
 
 
 // funzioni caselle speciali
@@ -269,33 +319,33 @@ function ritiraDue(){
 
 function closeModal(){
    showModal.style.display = "none";
-   dadoRotate.classList.remove("rotate-dice")
+  
 
 }
 
 function closeStop(){
     document.getElementById("stop").innerHTML = "  ";
+    document.getElementById("stop").classList.remove("stop");
 }
 
 function closeStopDue(){
     document.getElementById("stop-due").innerHTML = "  ";
+    document.getElementById("stop-due").classList.remove("stop");
 }
 
-function rilancia(){
-    document.getElementById("rilancia").innerHTML = " ";
-}
+// function rilancia(){
+//     document.getElementById("rilancia").innerHTML = " ";
+//     document.getElementById("rilancia").classList.remove("rilancia");
+// }
 
 // funzione rotazione dado
 
 
-function rotateDice(){
-   
-   
-    // dadoRotate.classList.add("rotate-dice");
-}
+
 
 function diceOpacity(){
 }
+
 function lanciaDado(){
     muoviPedina()
     showModal.style.display = "flex";

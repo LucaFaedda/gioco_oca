@@ -61,7 +61,7 @@ body{
 .row-dado, .row-giocatori, .row-legenda{
     margin: 0 1rem
 
-    
+
 }
 
 .row-giocatori{
@@ -141,7 +141,7 @@ body{
 /* classi numero caselle */
 #uno .numero-casella, #due .numero-casella, #tre .numero-casella, #quattro .numero-casella, #cinque .numero-casella, #sei .numero-casella, #sette .numero-casella, #otto .numero-casella, #nove .numero-casella{
     padding: 5px 10px;
-} 
+}
 
 .numero-casella{
     font-weight: 500;
@@ -167,9 +167,9 @@ body{
     text-transform: uppercase;
     position: relative;
     transition: all 1s;
-    z-index: 1; 
+    z-index: 1;
     letter-spacing: .15rem;
-	overflow: hidden; 
+	overflow: hidden;
 
 
 }
@@ -184,7 +184,7 @@ body{
     bottom: 0;
     left: 0;
     z-index: -2;
-    
+
 }
 
 #dado::before{
@@ -345,7 +345,7 @@ li{
     height: 500px;
     width: 800px;
     border-radius: 12px;
-    background-color:white;
+    background-color:rgb(175, 106, 15);
     z-index: 10;
     position: fixed;
     top: 150px;
@@ -357,7 +357,9 @@ li{
     flex-direction: row-reverse;
     height: 50px;
     align-items: center;
+    width: 100%;
 }
+
 
 .close{
     display: flex;
@@ -379,12 +381,49 @@ li{
 #modal-show{
     /* display:none */
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: column;
 
 }
 
 .body-modal{
+    width: 100%;
+    height: 60%;
+}
+
+.container-dice{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* sezione messaggi caselle speciali */
+.penalità-promozioni{
     align-self: center;
+    margin-bottom: auto;
+}
+
+.stop{
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: red;
+    background: #FFEB3B;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 2px 30px;
+    border-radius: 15px;
+}
+
+.rilancia{
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: rgba(43, 255, 0, 0.938);
+    background: #3ba0ff;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 2px 30px;
+    border-radius: 15px;
 }
 
 /* costruzuione dado */
@@ -392,78 +431,126 @@ li{
 #dice{
     width: 100px;
     height: 100px;
-    left: 40%;
-    top: 60%;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     font-size: 25px;
     position: relative;
     transform-style: preserve-3d;
-    transform: rotateX(135deg) rotateY(-217deg) rotateZ(-88deg);
-    animation: rotazione 1s linear;
+    
 
 }
-
-#dice div{
+.face{
     position: absolute;
-    box-sizing: border-box;
     height: 100%;
     width: 100%;
-    border: 1px solid white;
+    border:  solid rgb(235 229 229);
+    transform-style: preserve-3d;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.25);
+    
+    
 }
 
 /* lato facce */
 
 .background-face{
-    background-color:#000;
+    background-color:#fffdfd;
 
 }
 
 .front{
-    transform: translateZ(0px);
+    transform: translateZ(50px);
 }
 
 .back{
-    transform: translateZ(-100px) rotateY(180deg);
+    transform: rotateX(180deg) translateZ(50px);
+
 }
 
 .right{
-    transform-origin: top right;
-    transform: rotateY(-270deg) translateX(100px);
+    /* transform-origin: top right; */
+    transform: rotateY(90deg) translateZ(50px);
 }
 
 .left{
-    transform-origin: center left;
-    transform: rotateY(270deg) translateX(-100px);
+    /* transform-origin: center left; */
+    transform: rotateY(-90deg) translateZ(50px);
 }
 
 .top{
-    transform-origin: top center;
-    transform: rotateX(-270deg) translateY(-100px);
+    /* transform-origin: top center; */
+    transform: rotateX(90deg) translateZ(50px);
+    
 }
 
 .bottom{
-    transform-origin: bottom center;
-    transform: rotateX(270deg) translateY(100px);
+    /* transform-origin: bottom center; */
+    transform: rotateX(-90deg) translateZ(50px);
+    
 }
 
 .rotate-dice{
-    /* animation: rotazione 3s  ease-out ; */
-  
+    animation: rotazione 3s ;
+
+}
+
+/* puntini per numeri */
+
+.punto{
+    display: block;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: black;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.front .punto-1{
+    background-color: red;
+    top: 50%;
+    left: 50%;
+}
+
+.back .punto-1, .top .punto-1, .left .punto-1, .right .punto-2, .bottom .punto-6{
+    top: 75%;
+    left: 75%;
+}
+
+
+.back .punto-2, .top .punto-2, .left .punto-2,  .right .punto-3, .bottom .punto-1{
+    top: 25%;
+    left: 25%;
+}
+
+.top .punto-3, .right .punto-1{
+    top: 50%;
+    left: 50%;
+}
+
+.left .punto-3, .right .punto-4, .bottom .punto-3{
+    top: 75%;
+    left: 25%;
+}
+
+.left .punto-4, .right .punto-5, .bottom .punto-4{
+    top: 25%;
+    left: 75%;
+}
+
+.bottom .punto-5{
+    top: 50%;
+    left: 75%;
+}
+
+.bottom .punto-2{
+    top: 50%;
+    left: 25%;
 }
 
 
 
-/* .opacity-dice{
-    opacity: 0;
-} */
-
 @keyframes rotazione {
- 
-    0%{transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);}
-    50%{transform: rotateX(126deg) rotateY(127deg) rotateZ(245deg);}
-    100%{transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);}
+    0% {bottom: 150px;}
+    50%{transform: rotateX(455deg) rotateY(455deg); bottom: 0px;}
+    
 
 }
 
