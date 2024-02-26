@@ -139,17 +139,17 @@ function muoviUno(){
         passaUnTurnoUno()
         document.getElementById("stop").innerHTML = "Fermo UN turno";
         document.getElementById("stop").classList.add("stop");
-        setTimeout(closeStop, 2000)
-        playerUno = false
-        playerDue = true
+        setTimeout(closeStop, 2000);
+        playerUno = false;
+        playerDue = true;
     }
     else if(posizionePedinaUno == 35 || posizionePedinaUno == 55 ){
         passaDueTurnoUno()
         document.getElementById("stop-due").innerHTML = "Fermo DUE turni";
         document.getElementById("stop-due").classList.add("stop");
-        setTimeout(closeStopDue, 2000)
-        playerUno = false
-        playerDue = true
+        setTimeout(closeStopDue, 2000);
+        playerUno = false;
+        playerDue = true;
     }
     else if(posizionePedinaUno == 9 || posizionePedinaUno == 27 || posizionePedinaUno == 45 ){
         ritiraUno()
@@ -158,12 +158,15 @@ function muoviUno(){
         setTimeout(rilancia, 2000);
 
     }
+    else if(posizionePedinaUno == 5){
+        goToUno()
+    }
     else{
         const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ])
         colonna.classList.add("pedina-avanti-uno")
-        playerUno = false 
-        playerDue = true
-        turno.innerHTML = "È il turno player due"
+        playerUno = false;
+        playerDue = true;
+        turno.innerHTML = "È il turno player due";
         
     }
    }
@@ -257,6 +260,10 @@ function muoviDue(){
 
 
     }
+    else if(posizionePedinaDue == 5){
+        goToDue()
+
+    }
 
     else{
         const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ])
@@ -315,6 +322,23 @@ function ritiraDue(){
 
 }
 
+function goToUno(){
+    posizionePedinaUno = 13;
+    const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ])
+    colonna.classList.add("pedina-avanti-uno")
+    console.log("siamo sul 10?")
+    playerUno = true 
+    playerDue = false
+}
+
+function goToDue(){
+    posizionePedinaDue = 13;
+    const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ])
+    colonna.classList.add("pedina-avanti-due")
+    console.log("siamo sul 10?")
+    playerUno = true 
+    playerDue = false
+}
 // funzioni modale
 
 function closeModal(){
