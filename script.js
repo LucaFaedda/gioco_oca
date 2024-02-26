@@ -97,7 +97,7 @@ function muoviUno(){
             break;
     }
     
-    document.getElementById("result").innerHTML =  risultato;
+    document.getElementById("result").innerHTML =  "È uscito: " + risultato;
     dadoRotate.classList.add("rotate-dice");
     posizionePedinaUno += risultato 
     
@@ -192,7 +192,7 @@ function muoviDue(){
         default:
             break;
     }
-    document.getElementById("result").innerHTML =  risultato;
+    document.getElementById("result").innerHTML = "È uscito: " + risultato;
     dadoRotate.classList.add("rotate-dice");
     turno.innerHTML = "turno giocatore due";
     posizionePedinaDue += risultato 
@@ -333,10 +333,10 @@ function closeStopDue(){
     document.getElementById("stop-due").classList.remove("stop");
 }
 
-// function rilancia(){
-//     document.getElementById("rilancia").innerHTML = " ";
-//     document.getElementById("rilancia").classList.remove("rilancia");
-// }
+function rilancia(){
+    document.getElementById("rilancia").innerHTML = " ";
+    document.getElementById("rilancia").classList.remove("rilancia");
+}
 
 // funzione rotazione dado
 
@@ -349,7 +349,7 @@ function diceOpacity(){
 function lanciaDado(){
     muoviPedina()
     showModal.style.display = "flex";
-    // setTimeout(closeModal, 3000);
+    setTimeout(closeModal, 5000);
 }
 
 

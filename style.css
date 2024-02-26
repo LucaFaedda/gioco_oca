@@ -6,9 +6,9 @@
 
 body{
 
-    background: rgb(30,30,36);
-    background: linear-gradient(356deg, rgba(30,30,36,1) 30%, rgba(106,142,174,1) 91%);
-
+    /* background: #a5bf9a; */
+    background-image: url('./img/bk-forest.jpg');
+    background-size: cover;
 }
 
 /* sezione container */
@@ -25,9 +25,12 @@ body{
     z-index: 1;
     top: 0;
     left: 0;
-    background-color:#080707;
+    background-color:#011C1D;
     height: 100%;
-    color: white;
+    color: #E3DEE0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
 }
 
@@ -69,7 +72,7 @@ body{
 }
 
 .row-legenda{
-    margin-top: 3rem;
+    margin-bottom: 16rem;
     padding: 0.5rem;
     border-radius: 30px;
     background: #dddddd1c;
@@ -82,9 +85,9 @@ body{
 
 .col-2-orrizontale{
     width: calc(100% / 11);
-    border: 0.5px solid rgb(8, 8, 8);
+    border: #506560 1px solid;
     height: 80px;
-    background-color: #C3D2D5;
+    background-color: #011C1D;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -92,9 +95,9 @@ body{
 
 .col-2-verticale{
     width: calc(100% / 11); /* La stessa larghezza delle colonne orizzontali */
-    border: 0.5px solid rgb(8, 8, 8);
+    border: #506560 1px solid;
     height: 80px;
-    background-color: #C3D2D5;
+    background-color: #011C1D;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -145,14 +148,14 @@ body{
 
 .numero-casella{
     font-weight: 500;
-    color: black;
     padding: 5px;
     display: inline;
-    background-color: white;
+    color: #E3DEE0;
     position: absolute;
     border-radius: 50%;
     top: 5px;
     left: 5px;
+    font-family: "Poppins", sans-serif;
 }
 
 
@@ -170,6 +173,7 @@ body{
     z-index: 1;
     letter-spacing: .15rem;
 	overflow: hidden;
+    
 
 
 }
@@ -179,7 +183,7 @@ body{
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #0cf;
+    background-color: #879592;
     border-radius:10rem;
     bottom: 0;
     left: 0;
@@ -196,13 +200,13 @@ body{
     width: 0%;
     height: 100%;
     z-index: -1;
-    background-color: rgb(7, 91, 112);
+    background-color: #506560;
     transition: all 1s;
     border-radius: 10rem;
 }
 
 #dado:hover{
-    color: #fff;
+    cursor: pointer;
 }
 
 #dado:hover:before{
@@ -220,7 +224,7 @@ li:first-child{
     margin-bottom: 1rem;
     font-family: "Poppins", sans-serif;
     font-weight: 600;
-    color: #F9DC5C;
+    color: #879592;
 
 }
 
@@ -314,7 +318,7 @@ li{
     text-align: center;
     margin: 3rem 0rem;
     font-family: "Poppins", sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     font-style: normal;
 }
 
@@ -342,13 +346,16 @@ li{
 /* modale */
 
 .modal{
-    height: 500px;
-    width: 800px;
+    height: 700px;
+    width: 500px;
     border-radius: 12px;
-    background-color:rgb(175, 106, 15);
+    background-image: url('./img/bk-modal.jpg');
     z-index: 10;
     position: fixed;
     top: 150px;
+    left: 45%;
+    -webkit-box-shadow: -1px 1px 5px 20px #2D2826 inset;
+    background-size: cover;
 
 }
 
@@ -368,19 +375,24 @@ li{
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 30px;
+    margin-top: 30px;
+
+}
+
+.close i{
+    color: rgb(141, 7, 7);
 }
 
 .close:hover{
     cursor: pointer;
-    background-color: #ecf0f1;
+    background-color: #E3DEE0;
     transition: transform 0.25s
 }
 
 
 #modal-show{
-    /* display:none */
-    display: flex;
+    display:none;
     justify-content: space-between;
     flex-direction: column;
 
@@ -407,23 +419,35 @@ li{
 .stop{
     font-family: "Poppins", sans-serif;
     font-weight: 500;
-    color: red;
-    background: #FFEB3B;
+    color: rgb(153, 9, 9);
     text-align: center;
     text-transform: uppercase;
-    padding: 2px 30px;
-    border-radius: 15px;
+    font-size: 50px;
+    background-color: #80808078;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .rilancia{
     font-family: "Poppins", sans-serif;
     font-weight: 500;
-    color: rgba(43, 255, 0, 0.938);
-    background: #3ba0ff;
+    color: rgba(51, 175, 13, 0.94);
     text-align: center;
     text-transform: uppercase;
-    padding: 2px 30px;
-    border-radius: 15px;
+    font-size: 50px;
+    background-color: #80808078;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#result{
+    margin-top: 50px;
+    font-size: 30px;
+    color: #E3DEE0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    background-color: #80808078;
+    padding: 15px 50px;
 }
 
 /* costruzuione dado */
