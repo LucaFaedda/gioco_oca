@@ -158,12 +158,17 @@ function muoviUno(){
         setTimeout(rilancia, 2000);
 
     }
-    else if(posizionePedinaUno == 5){
-        goToUno()
+    else if(posizionePedinaUno == 5 || posizionePedinaUno == 29 || posizionePedinaUno == 49 ){
+        const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ]);
+        colonna.classList.add("pedina-avanti-uno");
+        document.getElementById("go-to-13").innerHTML = "Vai alla casella numero 13";
+        document.getElementById("go-to-13").classList.add("go-to");
+        setTimeout(goToUno, 2000);
+        
     }
     else{
-        const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ])
-        colonna.classList.add("pedina-avanti-uno")
+        const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ]);
+        colonna.classList.add("pedina-avanti-uno");
         playerUno = false;
         playerDue = true;
         turno.innerHTML = "È il turno player due";
@@ -260,9 +265,14 @@ function muoviDue(){
 
 
     }
-    else if(posizionePedinaDue == 5){
-        goToDue()
-
+    else if(posizionePedinaDue == 5 || posizionePedinaDue == 29 || posizionePedinaDue == 49 ){
+        const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ]);
+        colonna.classList.add("pedina-avanti-due");
+        document.getElementById("go-to-13").innerHTML = "Vai alla casella numero 13";
+        document.getElementById("go-to-13").classList.add("go-to");
+        setTimeout(goToDue, 2000);
+        
+        
     }
 
     else{
@@ -323,22 +333,45 @@ function ritiraDue(){
 }
 
 function goToUno(){
-    posizionePedinaUno = 13;
+    removeGoTo()
+    const colonne = document.querySelectorAll('.col-2-orrizontale , .col-2-verticale');
+    colonne.forEach(colonna => colonna.classList.remove("pedina-avanti-uno"));
+    if(posizionePedinaUno == 5){
+        posizionePedinaUno = 13;
+    }
+    else if(posizionePedinaUno == 29){
+        posizionePedinaUno = 40;
+    }
+    else if(posizionePedinaUno == 49){
+        posizionePedinaUno = 55;
+    }
     const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ])
     colonna.classList.add("pedina-avanti-uno")
     console.log("siamo sul 10?")
-    playerUno = true 
-    playerDue = false
+    playerUno = false;
+    playerDue = true;
 }
 
 function goToDue(){
-    posizionePedinaDue = 13;
+    removeGoTo()
+    const colonne = document.querySelectorAll('.col-2-orrizontale , .col-2-verticale');
+    colonne.forEach(colonna => colonna.classList.remove("pedina-avanti-due"));
+    if(posizionePedinaDue == 5){
+        posizionePedinaDue = 13;
+    }
+    else if(posizionePedinaDue == 29){
+        posizionePedinaDue = 40;
+    }
+    else if(posizionePedinaDue == 49){
+        posizionePedinaDue = 55;
+    }
     const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ])
     colonna.classList.add("pedina-avanti-due")
     console.log("siamo sul 10?")
     playerUno = true 
     playerDue = false
 }
+
 // funzioni modale
 
 function closeModal(){
@@ -360,6 +393,11 @@ function closeStopDue(){
 function rilancia(){
     document.getElementById("rilancia").innerHTML = " ";
     document.getElementById("rilancia").classList.remove("rilancia");
+}
+
+function removeGoTo(){
+    document.getElementById("go-to-13").innerHTML = " ";
+    document.getElementById("go-to-13").classList.remove("go-to");
 }
 
 // funzione rotazione dado

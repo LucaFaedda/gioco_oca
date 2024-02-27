@@ -158,6 +158,7 @@ body{
     font-family: "Poppins", sans-serif;
 }
 
+/* dado lancia */
 
 
 #dado{
@@ -343,6 +344,29 @@ li{
     background-size: cover;
 }
 
+#cinque{
+    background-image: url('./img/go-to-13.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 75px;
+    background-color: #a97fffd9;
+}
+
+#ventinove{
+    background-image: url('./img/go-to-40.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 75px;
+    background-color: #a97fffd9;
+}
+
+#quarantanove{
+    background-image: url('./img/go-to-55.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 75px;
+    background-color: #a97fffd9;
+}
 /* modale */
 
 .modal{
@@ -428,7 +452,7 @@ li{
     border-radius: 10px;
 }
 
-.rilancia{
+.rilancia, .go-to{
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     color: rgba(51, 175, 13, 0.94);
