@@ -162,17 +162,29 @@ function muoviUno(){
         const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ]);
         colonna.classList.add("pedina-avanti-uno");
         if(posizionePedinaUno == 5){
-            document.getElementById("go-to-13").innerHTML = "Vai alla casella numero 13";
+            document.getElementById("go-to").innerHTML = "Vai alla casella numero 13";
         }
         else if(posizionePedinaUno == 29){
-            document.getElementById("go-to-13").innerHTML = "Vai alla casella numero 40";
+            document.getElementById("go-to").innerHTML = "Vai alla casella numero 40";
         }
         else if(posizionePedinaUno == 49){
-            document.getElementById("go-to-13").innerHTML = "Vai alla casella numero 55";
+            document.getElementById("go-to").innerHTML = "Vai alla casella numero 55";
         }
-        document.getElementById("go-to-13").classList.add("go-to");
+        document.getElementById("go-to").classList.add("go-to");
         setTimeout(goToUno, 2000);
         
+    }
+    else if(posizionePedinaUno == 20 || posizionePedinaUno == 60){
+        const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ]);
+        colonna.classList.add("pedina-avanti-uno");
+        if(posizionePedinaUno == 20){
+            document.getElementById("return-to").innerHTML = "Ritorna alla casella 14";
+        }
+        else if(posizionePedinaUno == 60){
+            document.getElementById("return-to").innerHTML = "Ritorna alla casella 1";
+        }
+        document.getElementById("return-to").classList.add("return-to");
+        setTimeout(returnToUno, 2000);
     }
     else{
         const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ]);
@@ -277,19 +289,28 @@ function muoviDue(){
         const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ]);
         colonna.classList.add("pedina-avanti-due");
         if(posizionePedinaDue == 5){
-            document.getElementById("go-to-13").innerHTML = "Vai alla casella numero 13";
+            document.getElementById("go-to").innerHTML = "Vai alla casella numero 13";
         }
         else if(posizionePedinaDue == 29){
-            document.getElementById("go-to-13").innerHTML = "Vai alla casella numero 40";
+            document.getElementById("go-to").innerHTML = "Vai alla casella numero 40";
         }
         else if(posizionePedinaDue == 49){
-            document.getElementById("go-to-13").innerHTML = "Vai alla casella numero 55";
+            document.getElementById("go-to").innerHTML = "Vai alla casella numero 55";
         }
-
-        document.getElementById("go-to-13").classList.add("go-to");
+        document.getElementById("go-to").classList.add("go-to");
         setTimeout(goToDue, 2000);
-        
-        
+    }
+    else if(posizionePedinaDue == 20 || posizionePedinaDue == 60){
+        const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ]);
+        colonna.classList.add("pedina-avanti-due");
+        if(posizionePedinaDue == 20){
+            document.getElementById("return-to").innerHTML = "Ritorna alla casella 14";
+        }
+        else if(posizionePedinaDue == 60){
+            document.getElementById("return-to").innerHTML = "Ritorna alla casella 1";
+        }
+        document.getElementById("return-to").classList.add("return-to");
+        setTimeout(returnToDue, 2000);
     }
 
     else{
@@ -364,7 +385,6 @@ function goToUno(){
     }
     const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ])
     colonna.classList.add("pedina-avanti-uno")
-    console.log("siamo sul 10?")
     playerUno = false;
     playerDue = true;
 }
@@ -389,6 +409,37 @@ function goToDue(){
     playerDue = false
 }
 
+function returnToUno(){
+    removeReturnTo()
+    const colonne = document.querySelectorAll('.col-2-orrizontale , .col-2-verticale');
+    colonne.forEach(colonna => colonna.classList.remove("pedina-avanti-uno"));
+    if(posizionePedinaUno == 20){
+        posizionePedinaUno = 14;
+    }
+    else if(posizionePedinaUno == 60){
+        posizionePedinaUno = 1;
+    }
+    const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ])
+    colonna.classList.add("pedina-avanti-uno")
+    playerUno = false;
+    playerDue = true;
+}
+
+function returnToDue(){
+    removeReturnTo()
+    const colonne = document.querySelectorAll('.col-2-orrizontale , .col-2-verticale');
+    colonne.forEach(colonna => colonna.classList.remove("pedina-avanti-due"));
+    if(posizionePedinaDue == 20){
+        posizionePedinaDue = 14;
+    }
+    else if(posizionePedinaDue == 60){
+        posizionePedinaDue = 1;
+    }
+    const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ])
+    colonna.classList.add("pedina-avanti-due")
+    playerUno = true;
+    playerDue = false;
+}
 // funzioni modale
 
 function closeModal(){
@@ -413,8 +464,13 @@ function rilancia(){
 }
 
 function removeGoTo(){
-    document.getElementById("go-to-13").innerHTML = " ";
-    document.getElementById("go-to-13").classList.remove("go-to");
+    document.getElementById("go-to").innerHTML = " ";
+    document.getElementById("go-to").classList.remove("go-to");
+}
+
+function removeReturnTo(){
+    document.getElementById("return-to").innerHTML = " ";
+    document.getElementById("return-to").classList.remove("return-to");
 }
 
 // funzione rotazione dado

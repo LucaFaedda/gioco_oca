@@ -367,6 +367,22 @@ li{
     background-size: 75px;
     background-color: #a97fffd9;
 }
+
+#venti{
+    background-image: url('./img/return-to-14.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 75px;
+    background-color: #ff7f7fd9;
+}
+
+#sessanta{
+    background-image: url('./img/return-to-1.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 75px;
+    background-color: #ff7f7fd9;
+}
 /* modale */
 
 .modal{
@@ -440,7 +456,7 @@ li{
     margin-bottom: auto;
 }
 
-.stop{
+.stop, .return-to{
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     color: rgb(153, 9, 9);
