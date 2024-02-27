@@ -161,7 +161,15 @@ function muoviUno(){
     else if(posizionePedinaUno == 5 || posizionePedinaUno == 29 || posizionePedinaUno == 49 ){
         const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ]);
         colonna.classList.add("pedina-avanti-uno");
-        document.getElementById("go-to-13").innerHTML = "Vai alla casella numero 13";
+        if(posizionePedinaUno == 5){
+            document.getElementById("go-to-13").innerHTML = "Vai alla casella numero 13";
+        }
+        else if(posizionePedinaUno == 29){
+            document.getElementById("go-to-13").innerHTML = "Vai alla casella numero 40";
+        }
+        else if(posizionePedinaUno == 49){
+            document.getElementById("go-to-13").innerHTML = "Vai alla casella numero 55";
+        }
         document.getElementById("go-to-13").classList.add("go-to");
         setTimeout(goToUno, 2000);
         
@@ -268,7 +276,16 @@ function muoviDue(){
     else if(posizionePedinaDue == 5 || posizionePedinaDue == 29 || posizionePedinaDue == 49 ){
         const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ]);
         colonna.classList.add("pedina-avanti-due");
-        document.getElementById("go-to-13").innerHTML = "Vai alla casella numero 13";
+        if(posizionePedinaDue == 5){
+            document.getElementById("go-to-13").innerHTML = "Vai alla casella numero 13";
+        }
+        else if(posizionePedinaDue == 29){
+            document.getElementById("go-to-13").innerHTML = "Vai alla casella numero 40";
+        }
+        else if(posizionePedinaDue == 49){
+            document.getElementById("go-to-13").innerHTML = "Vai alla casella numero 55";
+        }
+
         document.getElementById("go-to-13").classList.add("go-to");
         setTimeout(goToDue, 2000);
         
