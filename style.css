@@ -456,7 +456,7 @@ li{
     margin-bottom: auto;
 }
 
-.stop, .return-to{
+.stop, .return-to, .go-and-stop{
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     color: rgb(153, 9, 9);
@@ -479,6 +479,8 @@ li{
     padding: 10px;
     border-radius: 10px;
 }
+
+
 
 #result{
     margin-top: 50px;

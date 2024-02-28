@@ -43,7 +43,6 @@ turno.innerHTML = "È il  turno del player uno"
 function muoviPedina(){
 
     if(playerUno == true){
-    
         if(turnoFermoUno > 0){
             turnoFermoUno-- 
             playerUno = false
@@ -54,7 +53,6 @@ function muoviPedina(){
         }
 
     }else if(playerDue == true){
-
         if(turnoFermoDue > 0){
             turnoFermoDue--
             playerUno = true
@@ -65,14 +63,14 @@ function muoviPedina(){
         }
     }
 
-    console.log("posizione player uno: " + posizionePedinaUno)
-    console.log("posizione player due: " + posizionePedinaDue)
+
 
     
     
 }
 
 function muoviUno(){
+
     let risultato = Math.floor(Math.random() * (1, 6) + 1);
     switch(risultato){
         case 1:
@@ -163,14 +161,20 @@ function muoviUno(){
         colonna.classList.add("pedina-avanti-uno");
         if(posizionePedinaUno == 5){
             document.getElementById("go-to").innerHTML = "Vai alla casella numero 13";
+            document.getElementById("go-to").classList.add("go-to");
         }
         else if(posizionePedinaUno == 29){
             document.getElementById("go-to").innerHTML = "Vai alla casella numero 40";
+            document.getElementById("go-to").classList.add("go-to");
         }
         else if(posizionePedinaUno == 49){
-            document.getElementById("go-to").innerHTML = "Vai alla casella numero 55";
+            document.getElementById("go-to").innerHTML = "Vai alla casella numero 55 e stai fermo due turni";
+            passaDueTurnoUno()
+            document.getElementById("go-to").classList.add("go-and-stop");
+            setTimeout(closeStopDue, 2000);
+            playerUno = false;
+            playerDue = true;
         }
-        document.getElementById("go-to").classList.add("go-to");
         setTimeout(goToUno, 2000);
         
     }
@@ -197,6 +201,7 @@ function muoviUno(){
    }
 
 function muoviDue(){
+
     let risultato = Math.floor(Math.random() * (1, 6) + 1);
     switch(risultato){
         case 1:
@@ -290,14 +295,20 @@ function muoviDue(){
         colonna.classList.add("pedina-avanti-due");
         if(posizionePedinaDue == 5){
             document.getElementById("go-to").innerHTML = "Vai alla casella numero 13";
+            document.getElementById("go-to").classList.add("go-to");
         }
         else if(posizionePedinaDue == 29){
             document.getElementById("go-to").innerHTML = "Vai alla casella numero 40";
+            document.getElementById("go-to").classList.add("go-to");
         }
         else if(posizionePedinaDue == 49){
-            document.getElementById("go-to").innerHTML = "Vai alla casella numero 55";
+            document.getElementById("go-to").innerHTML = "Vai alla casella numero 55 e stai fermo due turni";
+            passaDueTurnoDue()
+            document.getElementById("go-to").classList.add("go-and-stop");
+            setTimeout(closeStopDue, 2000);
+            playerUno = false;
+            playerDue = true;
         }
-        document.getElementById("go-to").classList.add("go-to");
         setTimeout(goToDue, 2000);
     }
     else if(posizionePedinaDue == 20 || posizionePedinaDue == 60){
@@ -331,7 +342,8 @@ function passaUnTurnoUno() {
     const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ])
     colonna.classList.add("pedina-stop-uno");
     playerUno = !playerUno;
-    turnoFermoUno = 1;     
+    turnoFermoUno = 1;  
+    console.log("turno fermo uno funzione passaTurno: " + turnoFermoUno)   
 }
 
 function passaUnTurnoDue() {
@@ -339,6 +351,7 @@ function passaUnTurnoDue() {
     colonna.classList.add("pedina-stop-due")
     playerDue = !playerDue;
     turnoFermoDue = 1;
+    console.log("turno fermo due funzione passaTurno: " + turnoFermoDue)  
 }
 
 function passaDueTurnoUno() {
@@ -404,7 +417,6 @@ function goToDue(){
     }
     const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ])
     colonna.classList.add("pedina-avanti-due")
-    console.log("siamo sul 10?")
     playerUno = true 
     playerDue = false
 }
@@ -440,7 +452,9 @@ function returnToDue(){
     playerUno = true;
     playerDue = false;
 }
-// funzioni modale
+
+
+// funzioni modale per messaggi
 
 function closeModal(){
    showModal.style.display = "none";
@@ -486,7 +500,4 @@ function lanciaDado(){
     showModal.style.display = "flex";
     setTimeout(closeModal, 5000);
 }
-
-
-
 
