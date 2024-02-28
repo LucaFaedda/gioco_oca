@@ -116,6 +116,15 @@ body{
 /* SEZIONE CLASSI GENERICHE */
 
 /* classi bordi  */
+.zero{
+    margin-bottom: 5rem;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    width: 125px;
+    background-size: cover;
+    height: 90px;
+}
 
 #uno{
     border-radius: 15px 0 0 15px;
@@ -282,9 +291,7 @@ li{
     border-width: 5px;
 }
 
-.winner{
-    background-color: yellow;
-}
+
 
 .square{
     width: 100px;
@@ -399,6 +406,21 @@ li{
 
 }
 
+.modal-winner{
+    height: 290px;
+    width: 400px;
+    border-radius: 12px;
+    z-index: 10;
+    position: fixed;
+    top: 260px;
+    left: 45%;
+    background-color: #0b0a0a;
+    background-image: url('./img/fireworks.gif');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+
 .header-modal{
     display: flex;
     flex-direction: row-reverse;
@@ -438,9 +460,23 @@ li{
 
 }
 
+#modal-winner{
+    display:none;
+    justify-content: space-between;
+    flex-direction: column;
+
+}
+
 .body-modal{
     width: 100%;
     height: 60%;
+}
+
+.body-winner{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
 }
 
 .container-dice{
@@ -450,6 +486,9 @@ li{
     align-items: center;
 }
 
+#vincitore{
+    color: #efb810;
+}
 /* sezione messaggi caselle speciali */
 .penalità-promozioni{
     align-self: center;
@@ -462,7 +501,7 @@ li{
     color: rgb(153, 9, 9);
     text-align: center;
     text-transform: uppercase;
-    font-size: 50px;
+    font-size: 45px;
     background-color: #80808078;
     padding: 10px;
     border-radius: 10px;
@@ -474,7 +513,7 @@ li{
     color: rgba(51, 175, 13, 0.94);
     text-align: center;
     text-transform: uppercase;
-    font-size: 50px;
+    font-size: 45px;
     background-color: #80808078;
     padding: 10px;
     border-radius: 10px;
@@ -500,6 +539,7 @@ li{
     font-size: 25px;
     position: relative;
     transform-style: preserve-3d;
+    display: none;
     
 
 }

@@ -3,6 +3,8 @@ let dadoRotate = document.getElementById("dice");
 let btn = document.getElementById("dado");
 let turno = document.getElementById("turno");
 let showModal = document.getElementById("modal-show");
+let result = document.getElementById("result");
+let showModalWinner = document.getElementById("modal-winner");
 const containerGrande = document.getElementsByClassName(".container")
 let posizionePedinaUno = 0;
 let posizionePedinaDue = 0;
@@ -15,8 +17,12 @@ let turnoFermoDue = 0;
 let count = 0;
 let ritiraTimeDue; 
 let duration = 2;
+let partenzaUno = document.getElementById("zero-uno");
+let partenzaDue = document.getElementById("zero-due");
 
 
+partenzaUno.classList.add("pedina-avanti-uno");
+partenzaDue.classList.add("pedina-avanti-due");
 
 const numeriColonne = [
     "uno", "due", "tre", "quattro", "cinque", "sei",
@@ -40,24 +46,40 @@ for ( let i = 1; i <= 63; i++){
 turno.innerHTML = "È il  turno del player uno"
 
 
+
 function muoviPedina(){
+
+    if(posizionePedinaUno > 0 || posizionePedinaDue > 0){
+        partenzaUno.style.display = "none";
+        partenzaDue.style.display = "none";
+    }
 
     if(playerUno == true){
         if(turnoFermoUno > 0){
             turnoFermoUno-- 
             playerUno = false
             playerDue = true
+            console.log("sto fermo p1?")
+            sonoFermo()
+            
         }
         else{
+            console.log("sto lanciando per il p1")
             muoviUno()
+            
         }
 
-    }else if(playerDue == true){
+    }else if(playerDue == true ){
         if(turnoFermoDue > 0){
             turnoFermoDue--
             playerUno = true
             playerDue = false
-        }else{
+            console.log("sto fermo p2?")
+            sonoFermo()
+            
+        }
+        else{
+            console.log("sto lanciando per il p2")
             muoviDue()
 
         }
@@ -70,8 +92,12 @@ function muoviPedina(){
 }
 
 function muoviUno(){
-
-    let risultato = Math.floor(Math.random() * (1, 6) + 1);
+    if(turnoFermoUno == 0){
+        console.log("ho lanciato per p1")
+        dadoRotate.style.display = "block";
+        result.style.display = "block";
+        document.getElementById("stai-fermo").innerHTML = " ";
+        let risultato = Math.floor(Math.random() * (1, 6) + 1);
     switch(risultato){
         case 1:
             dadoRotate.style.transform = 'rotateX(0deg) rotateY(0deg)';
@@ -94,6 +120,8 @@ function muoviUno(){
         default:
             break;
     }
+
+
     
     document.getElementById("result").innerHTML =  "È uscito: " + risultato;
     dadoRotate.classList.add("rotate-dice");
@@ -127,10 +155,9 @@ function muoviUno(){
         turno.innerHTML = "È il turno player due"
     }
     else if(posizionePedinaUno == 63){
-        alert("Player uno hai vinto!!!")
+        showModalWinner.style.display = "flex";
         btn.setAttribute("disabled", "disabled")
-        const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ])
-        colonna.classList.add("winner");
+        document.getElementById("vincitore").innerHTML = "Player UNO ha vinto!!!!";
         
     }
     else if( posizionePedinaUno == 10 || posizionePedinaUno == 25 || posizionePedinaUno == 54){
@@ -154,6 +181,14 @@ function muoviUno(){
         document.getElementById("rilancia").innerHTML = "Ritira";
         document.getElementById("rilancia").classList.add("rilancia");
         setTimeout(rilancia, 2000);
+        if(posizionePedinaUno == 10){
+            document.getElementById("go-to").innerHTML = "Stai fermo un turno";
+            passaUnTurnoUno()
+            document.getElementById("stop").classList.add("stop");
+            setTimeout(closeStop, 2000);
+            playerUno = false;
+            playerDue = true;
+        }
 
     }
     else if(posizionePedinaUno == 5 || posizionePedinaUno == 29 || posizionePedinaUno == 49 ){
@@ -198,10 +233,17 @@ function muoviUno(){
         turno.innerHTML = "È il turno player due";
         
     }
+    }
+    
    }
 
 function muoviDue(){
+    if(turnoFermoDue == 0){
 
+        console.log("ho lanciato p2")
+        dadoRotate.style.display = "block";
+        result.style.display = "block";
+        document.getElementById("stai-fermo").innerHTML = " ";
     let risultato = Math.floor(Math.random() * (1, 6) + 1);
     switch(risultato){
         case 1:
@@ -260,10 +302,9 @@ function muoviDue(){
  
     }
     else if(posizionePedinaDue == 63 ){
-        alert("Player due hai vinto!!!")
+        showModalWinner.style.display = "flex";
         btn.setAttribute("disabled", "disabled")
-        const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ])
-        colonna.classList.add("winner");
+        document.getElementById("vincitore").innerHTML = "Player DUE ha vinto!!!!";
         
     }
     else if(posizionePedinaDue == 10 || posizionePedinaDue == 25 || posizionePedinaDue == 54){
@@ -287,6 +328,14 @@ function muoviDue(){
         document.getElementById("rilancia").innerHTML = "Ritira";
         document.getElementById("rilancia").classList.add("rilancia");
         setTimeout(rilancia, 2000);
+        if(posizionePedinaDue == 10){
+            document.getElementById("go-to").innerHTML = "Stai fermo un turno";
+            passaUnTurnoDue()
+            document.getElementById("stop").classList.add("stop");
+            setTimeout(closeStop, 2000);
+            playerUno = true;
+            playerDue = false;
+        }
 
 
     }
@@ -306,8 +355,8 @@ function muoviDue(){
             passaDueTurnoDue()
             document.getElementById("go-to").classList.add("go-and-stop");
             setTimeout(closeStopDue, 2000);
-            playerUno = false;
-            playerDue = true;
+            playerUno = true;
+            playerDue = false;
         }
         setTimeout(goToDue, 2000);
     }
@@ -330,6 +379,7 @@ function muoviDue(){
         playerUno = true 
         playerDue = false
         turno.innerHTML = "È il turno player uno"
+    }
     }
 }
 
@@ -369,15 +419,11 @@ function passaDueTurnoDue() {
 }
 
 function ritiraUno(){
-    console.log("ritira uno time function")
     const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ])
     colonna.classList.add("pedina-avanti-uno")
-
-
 }
 
 function ritiraDue(){
-    console.log("ritira due time function")
     const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ])
     colonna.classList.add("pedina-avanti-due")
 
@@ -458,9 +504,8 @@ function returnToDue(){
 
 function closeModal(){
    showModal.style.display = "none";
-  
-
 }
+
 
 function closeStop(){
     document.getElementById("stop").innerHTML = "  ";
@@ -487,9 +532,13 @@ function removeReturnTo(){
     document.getElementById("return-to").classList.remove("return-to");
 }
 
+function sonoFermo(){
+    document.getElementById("stai-fermo").innerHTML = "STAI FERMO ";
+    dadoRotate.style.display = "none";
+    result.style.display = "none";
+}
+
 // funzione rotazione dado
-
-
 
 
 function diceOpacity(){
@@ -500,4 +549,10 @@ function lanciaDado(){
     showModal.style.display = "flex";
     setTimeout(closeModal, 5000);
 }
+
+// funzioni modal vittoria
+
+function closeModalWinner(){
+    showModalWinner.style.display = "none";
+ }
 

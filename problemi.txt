@@ -1,0 +1,11 @@
+problemi da risolvere:
+
+1) quando un giocatore sta fermo c'è un tiro a vuoto DONE
+2) quando tramite una casella ritira o vai a si capita su una casella speciale non si attiva l'effetto di quella casella DONE
+3) inserire un backend?
+4) migliorare struttura ritorno indietro DONE
+5) migliorare vittoria DONE
+6) mostrare casella 0 ovvero partenza? DONE
+7) inserire caselle speciali stai fermo finchè non esce sei o quattro?
+
+

@@ -54,6 +54,10 @@
     
     <div class="container">
         <div class="row-orrizontale">
+            <div class="col-2-orrizontale zero" id="zero-uno"><p class="numero-casella"></p></div>
+            <div class="col-2-orrizontale zero" id="zero-due"><p class="numero-casella"></p></div>
+        </div>
+        <div class="row-orrizontale">
             <div class="col-2-orrizontale" id="uno"><p class="numero-casella">1</p></div>
             <div class="col-2-orrizontale" id="due"><p class="numero-casella">2</p></div>
             <div class="col-2-orrizontale" id="tre"><p class="numero-casella">3</p></div>
@@ -145,6 +149,7 @@
                     <h4 id="rilancia"></h4>
                     <h4 id="go-to"></h4>
                     <h4 id="return-to"></h4>
+                    <h4 id="stai-fermo"></h4>
 
                 </div>
                 <div class="body-modal">
@@ -188,6 +193,15 @@
                         </div>
                         <h4 id="result"></h4>
                     </div>
+                </div>
+            </div>
+            <div class="modal-winner" id="modal-winner">
+                <div class="header-modal">
+                    <div class="close"  onclick="closeModalWinner()"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+                <div class=" body-winner">
+
+                    <h2 id="vincitore"></h2>>
                 </div>
             </div>
         </div>
