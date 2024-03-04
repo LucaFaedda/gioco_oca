@@ -49,22 +49,20 @@ turno.innerHTML = "È il  turno del player uno"
 
 function muoviPedina(){
 
-    if(posizionePedinaUno > 0 || posizionePedinaDue > 0){
-        partenzaUno.style.display = "none";
-        partenzaDue.style.display = "none";
-    }
+
 
     if(playerUno == true){
         if(turnoFermoUno > 0){
             turnoFermoUno-- 
             playerUno = false
             playerDue = true
-            console.log("sto fermo p1?")
-            sonoFermo()
+            stillNow()
             
         }
+        else if(posizionePedinaUno == 16 || posizionePedinaUno == 40 || posizionePedinaUno == 57){
+            goForSixOrFourOne()
+        }
         else{
-            console.log("sto lanciando per il p1")
             muoviUno()
             
         }
@@ -74,12 +72,13 @@ function muoviPedina(){
             turnoFermoDue--
             playerUno = true
             playerDue = false
-            console.log("sto fermo p2?")
-            sonoFermo()
+            stillNow()
             
         }
+        else if(posizionePedinaDue == 16 || posizionePedinaDue == 40 || posizionePedinaDue == 57){
+            goForSixOrFourDue()
+        }
         else{
-            console.log("sto lanciando per il p2")
             muoviDue()
 
         }
@@ -93,7 +92,6 @@ function muoviPedina(){
 
 function muoviUno(){
     if(turnoFermoUno == 0){
-        console.log("ho lanciato per p1")
         dadoRotate.style.display = "block";
         result.style.display = "block";
         document.getElementById("stai-fermo").innerHTML = " ";
@@ -180,7 +178,7 @@ function muoviUno(){
         ritiraUno()
         document.getElementById("rilancia").innerHTML = "Ritira";
         document.getElementById("rilancia").classList.add("rilancia");
-        setTimeout(rilancia, 2000);
+        setTimeout(raises, 2000);
         if(posizionePedinaUno == 10){
             document.getElementById("go-to").innerHTML = "Stai fermo un turno";
             passaUnTurnoUno()
@@ -225,6 +223,11 @@ function muoviUno(){
         document.getElementById("return-to").classList.add("return-to");
         setTimeout(returnToUno, 2000);
     }
+    else if(posizionePedinaUno == 16 || posizionePedinaUno == 40 || posizionePedinaUno == 57){
+        document.getElementById("stai-fermo").innerHTML = "Stai Fermo finchè non esce 4 o 6";
+        document.getElementById("stai-fermo").classList.add("stai-fermo");
+        setTimeout(closeStaiFermoUno, 2000);
+    }
     else{
         const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaUno - 1 ]);
         colonna.classList.add("pedina-avanti-uno");
@@ -239,8 +242,6 @@ function muoviUno(){
 
 function muoviDue(){
     if(turnoFermoDue == 0){
-
-        console.log("ho lanciato p2")
         dadoRotate.style.display = "block";
         result.style.display = "block";
         document.getElementById("stai-fermo").innerHTML = " ";
@@ -327,7 +328,7 @@ function muoviDue(){
         ritiraDue()
         document.getElementById("rilancia").innerHTML = "Ritira";
         document.getElementById("rilancia").classList.add("rilancia");
-        setTimeout(rilancia, 2000);
+        setTimeout(raises, 2000);
         if(posizionePedinaDue == 10){
             document.getElementById("go-to").innerHTML = "Stai fermo un turno";
             passaUnTurnoDue()
@@ -372,7 +373,11 @@ function muoviDue(){
         document.getElementById("return-to").classList.add("return-to");
         setTimeout(returnToDue, 2000);
     }
-
+    else if(posizionePedinaDue == 16 || posizionePedinaDue == 40 || posizionePedinaDue == 57){
+        document.getElementById("stai-fermo").innerHTML = "Stai Fermo finchè non esce 4 o 6";
+        document.getElementById("stai-fermo").classList.add("stai-fermo");
+        setTimeout(closeStaiFermoDue, 2000);
+    }
     else{
         const colonna = document.getElementById(Object.keys(caselle)[posizionePedinaDue - 1 ])
         colonna.classList.add("pedina-avanti-due")
@@ -517,7 +522,17 @@ function closeStopDue(){
     document.getElementById("stop-due").classList.remove("stop");
 }
 
-function rilancia(){
+function closeStaiFermoUno(){
+    document.getElementById("stai-fermo").innerHTML = "  ";
+    document.getElementById("stai-fermo").classList.remove("stai-fermo");
+}
+
+function closeStaiFermoDue(){
+    document.getElementById("stai-fermo").innerHTML = "  ";
+    document.getElementById("stai-fermo").classList.remove("stai-fermo");
+}
+
+function raises(){
     document.getElementById("rilancia").innerHTML = " ";
     document.getElementById("rilancia").classList.remove("rilancia");
 }
@@ -532,10 +547,85 @@ function removeReturnTo(){
     document.getElementById("return-to").classList.remove("return-to");
 }
 
-function sonoFermo(){
+function stillNow(){
     document.getElementById("stai-fermo").innerHTML = "STAI FERMO ";
     dadoRotate.style.display = "none";
     result.style.display = "none";
+}
+
+function goForSixOrFourOne(){
+    console.log("lancio per uscire P1")
+    let risultato = Math.floor(Math.random() * (1, 6) + 1);
+    switch(risultato){
+        case 1:
+            dadoRotate.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            break;
+        case 2:
+            dadoRotate.style.transform = 'rotateX(180deg) rotateY(0deg)';
+            break;
+        case 3:
+            dadoRotate.style.transform = 'rotateX(-90deg) rotateY(0deg)';
+            break;
+        case 5:
+            dadoRotate.style.transform = 'rotateX(0deg) rotateY(270deg)';
+            break;
+        case 4:
+            dadoRotate.style.transform = 'rotateX(0deg) rotateY(90deg)';
+            break;
+        case 6:
+            dadoRotate.style.transform = 'rotateX(90deg) rotateY(0deg)';
+            break;
+        default:
+            break;
+    }
+    document.getElementById("result").innerHTML = "È uscito: " + risultato;
+    dadoRotate.classList.add("rotate-dice");
+    if(risultato == 4 || risultato == 6){
+        muoviUno();
+    }
+    else{
+        console.log("salti un turno finchè non esce 4 o 6 P1 il risultato è: " + risultato  )
+        playerUno = false; 
+        playerDue = true;
+
+    }
+}
+
+function goForSixOrFourDue(){
+    console.log("lancio per uscire P2")
+    let risultato = Math.floor(Math.random() * (1, 6) + 1);
+    switch(risultato){
+        case 1:
+            dadoRotate.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            break;
+        case 2:
+            dadoRotate.style.transform = 'rotateX(180deg) rotateY(0deg)';
+            break;
+        case 3:
+            dadoRotate.style.transform = 'rotateX(-90deg) rotateY(0deg)';
+            break;
+        case 5:
+            dadoRotate.style.transform = 'rotateX(0deg) rotateY(270deg)';
+            break;
+        case 4:
+            dadoRotate.style.transform = 'rotateX(0deg) rotateY(90deg)';
+            break;
+        case 6:
+            dadoRotate.style.transform = 'rotateX(90deg) rotateY(0deg)';
+            break;
+        default:
+            break;
+    }
+    document.getElementById("result").innerHTML = "È uscito: " + risultato;
+    dadoRotate.classList.add("rotate-dice");
+    if(risultato == 4 || risultato == 6){
+        muoviDue();
+    }
+    else{
+        console.log("salti un turno finchè non esce 4 o 6 P2 il risultato è: " + risultato)
+        playerUno = true;
+        playerDue = false;
+    }
 }
 
 // funzione rotazione dado

@@ -72,7 +72,7 @@ body{
 }
 
 .row-legenda{
-    margin-bottom: 16rem;
+    margin-bottom: 4rem;
     padding: 0.5rem;
     border-radius: 30px;
     background: #dddddd1c;
@@ -390,6 +390,13 @@ li{
     background-size: 75px;
     background-color: #ff7f7fd9;
 }
+
+#sedici, #quaranta, #cinquantasette{
+    background-image: url('./img/four_or_six.png');
+    background-size: 139px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 /* modale */
 
 .modal{
@@ -495,7 +502,7 @@ li{
     margin-bottom: auto;
 }
 
-.stop, .return-to, .go-and-stop{
+.stop, .return-to, .go-and-stop, .stai-fermo{
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     color: rgb(153, 9, 9);
