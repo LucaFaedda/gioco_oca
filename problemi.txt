@@ -6,6 +6,10 @@ problemi da risolvere:
 4) migliorare struttura ritorno indietro DONE
 5) migliorare vittoria DONE
 6) mostrare casella 0 ovvero partenza? DONE
-7) inserire caselle speciali stai fermo finchè non esce sei o quattro?
-
-
+7) inserire caselle speciali stai fermo finchè non esce sei o quattro?  DONE
+8) quando si capita su casella 4 o 6 non si vede pedina
+9) doopo casella speciale 4 o 6 non cambia turno giocatore scritta
+10) guida inizale?
+11) bug che esce dopo tot
+12) far durare di pià pop-up
+13) scroll automatico
